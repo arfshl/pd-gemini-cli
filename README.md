@@ -2,9 +2,9 @@
 
 ### This instruction is for debian/ubuntu based distros
 
-1. Install nodejs, and npm 25.x
+1. Install nodejs 25.x
 
-       apt update && apt install curl -y && apt-get install -y curl && curl -fsSL https://deb.nodesource.com/setup_25.x && chmod +x setup_25.x && ./setup_25.x && apt-get install nodejs npm -y 
+       apt update && apt install curl -y && apt-get install -y curl && curl -L -o setupnode https://deb.nodesource.com/setup_25.x && chmod +x setupnode && ./setupnode && apt install nodejs -y 
 
 2. Install yarn
 
@@ -14,6 +14,7 @@
 
        yarn global add @google/gemini-cli
 
+4. use `gemini` command for first run
 4. Click number 1 to login with google
 5. An login URL will be displayed, visit it with your browser
 6. Login with your google account as usual
