@@ -1,8 +1,10 @@
 # Run gemini-cli within proot-distro
 
-1. Install nodejs, and npm (for this example i use apt, which is for debian/ubuntu based distro)
+### This instruction is for debian/ubuntu based distros
 
-       apt install nodejs npm -y
+1. Install nodejs, and npm 25.x
+
+       apt update && apt install curl -y && apt-get install -y curl && curl -fsSL https://deb.nodesource.com/setup_25.x && chmod +x setup_25.x && ./setup_25.x && apt-get install nodejs npm -y 
 
 2. Install yarn
 
