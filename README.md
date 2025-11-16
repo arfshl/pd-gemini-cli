@@ -2,7 +2,7 @@
 
 1. Install nodejs, and npm (for this example i use apt, which is for debian/ubuntu based distro)
 
-       apt install nodehs npm -y
+       apt install nodejs npm -y
 
 2. Install yarn
 
