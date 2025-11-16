@@ -14,9 +14,10 @@
 
        yarn global add @google/gemini-cli
 
-4. use `gemini` command for first run
-4. Click number 1 to login with google
-5. An login URL will be displayed, visit it with your browser
-6. Login with your google account as usual
-7. Copy and paste your authorization code on termux (don't share this code with anyone!)
-8. Done! gemini-cli installed
+4. Use `gemini` command for first run
+5. Click number 1 to login with google
+6. gemini will ask for restart
+7. An login URL will be displayed, visit it with your browser
+8. Login with your google account as usual
+9. Copy and paste your authorization code on termux (don't share this code with anyone!)
+10. Done! gemini-cli installed
