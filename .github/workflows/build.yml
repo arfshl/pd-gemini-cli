@@ -26,8 +26,8 @@ jobs:
           sudo apt install -yq /tmp/keyring.deb
       - name: Start Building
         run: |
-          curl -L -o ubuntu-lts-aarch64.tar.xz https://github.com/arfshl/pd-custom-rootfs/releases/download/debian-stable/debian-stable-aarch64.tar.xz
-          tar --exclude=dev/* -xJf ubuntu-lts-aarch64.tar.xz
+          curl -L -o debian-stable-aarch64.tar.xz https://github.com/arfshl/pd-custom-rootfs/releases/download/debian-stable/debian-stable-aarch64.tar.xz
+          tar --exclude=dev/* -xJf debian-stable-aarch64.tar.xz
           sudo mkdir -p $GITHUB_WORKSPACE/./dev
           sudo mkdir -p $GITHUB_WORKSPACE/./proc
           sudo mkdir -p $GITHUB_WORKSPACE/./sys
