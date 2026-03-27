@@ -28,19 +28,20 @@ jobs:
         run: |
           curl -L -o debian-stable-aarch64.tar.xz https://github.com/arfshl/pd-custom-rootfs/releases/download/debian-stable/debian-stable-aarch64.tar.xz
           tar --exclude=dev/* -xJf debian-stable-aarch64.tar.xz
-          sudo mkdir -p $GITHUB_WORKSPACE/./dev
-          sudo mkdir -p $GITHUB_WORKSPACE/./proc
-          sudo mkdir -p $GITHUB_WORKSPACE/./sys
-          sudo mkdir -p $GITHUB_WORKSPACE/./tmp
-          sudo chmod -R 777 $GITHUB_WORKSPACE/.
-          sudo mount --bind /dev $GITHUB_WORKSPACE/./dev
-          sudo mount --bind /proc $GITHUB_WORKSPACE/./proc
-          sudo mount --bind /sys $GITHUB_WORKSPACE/./sys
-          sudo chroot $GITHUB_WORKSPACE/./ /bin/bash -c "apt update && apt upgrade && apt install curl -y && apt-get install -y curl && curl -L -o setupnode https://deb.nodesource.com/setup_24.x && chmod +x setupnode && ./setupnode && apt install nodejs -y && npm install -g yarn && yarn global add @google/gemini-cli"
-          sudo umount -l $GITHUB_WORKSPACE/./dev
-          sudo umount -l $GITHUB_WORKSPACE/./proc
-          sudo umount -l $GITHUB_WORKSPACE/./sys
-          sudo tar --exclude=dev/* -cf - ./ | xz -9 -T0 -c > gemini-cli-debian.tar.xz
+          sudo mkdir -p $GITHUB_WORKSPACE/debian/dev
+          sudo mkdir -p $GITHUB_WORKSPACE/debian/proc
+          sudo mkdir -p $GITHUB_WORKSPACE/debian/sys
+          sudo mkdir -p $GITHUB_WORKSPACE/debian/tmp
+          sudo chmod -R 755 $GITHUB_WORKSPACE/debian
+          sudo chmod -R 1777 $GITHUB_WORKSPACE/debian/tmp
+          sudo mount --bind /dev $GITHUB_WORKSPACE/debian/dev
+          sudo mount --bind /proc $GITHUB_WORKSPACE/debian/proc
+          sudo mount --bind /sys $GITHUB_WORKSPACE/debian/sys
+          sudo chroot $GITHUB_WORKSPACE/debian /bin/sh -c "apt update && apt upgrade && apt install curl -y && apt-get install -y curl && curl -L -o setupnode https://deb.nodesource.com/setup_24.x && chmod +x setupnode && ./setupnode && apt install nodejs -y && npm install -g yarn && yarn global add @google/gemini-cli"
+          sudo umount -l $GITHUB_WORKSPACE/debian/dev
+          sudo umount -l $GITHUB_WORKSPACE/debian/proc
+          sudo umount -l $GITHUB_WORKSPACE/debian/sys
+          sudo tar --exclude=dev/* -cf - ./ | xz -9 -T0 -c > gemini-cli-debian-stable.tar.xz
           
       - name: Push to release
         uses: softprops/action-gh-release@v2
@@ -48,6 +49,6 @@ jobs:
           tag_name: latest
           name: Debian proot-distro rootfs with gemini cli (containerized)
           files: |
-            gemini-cli-debian.tar.xz
+            gemini-cli-debian-stable.tar.xz
           preserve_order: true
           make_latest: true
