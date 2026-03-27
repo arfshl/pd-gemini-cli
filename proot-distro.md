@@ -2,7 +2,7 @@
 
 ### This instruction is for debian/ubuntu based distros
 
-1. Install nodejs 25.x
+1. Install nodejs 24.x
 
        apt update && apt install curl -y && apt-get install -y curl && curl -L -o setupnode https://deb.nodesource.com/setup_24.x && chmod +x setupnode && ./setupnode && apt install nodejs -y 
 
