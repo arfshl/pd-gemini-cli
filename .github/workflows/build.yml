@@ -47,7 +47,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
-          name: Debian proot-distro rootfs with gemini cli (containerized)
+          name: Debian proot-distro rootfs with gemini cli (containerized) (ARM64)
           files: |
             gemini-cli-debian-stable.tar.xz
           preserve_order: true
