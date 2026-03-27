@@ -21,3 +21,11 @@
 8. Login with your google account as usual
 9. Copy and paste your authorization code on termux (don't share this code with anyone!)
 10. Done! gemini-cli installed
+
+### Debian stable proot-distro rootfs with gemini-cli (Containerized) (ARM64)
+Useful if you want to use gemini-cli separated from your main termux setup or your other proot-distro rootfs
+
+1. Install
+proot-distro alias: gemini-cli-debian
+
+       apt install proot-distro -y && PD_OVERRIDE_TARBALL_URL="https://github.com/arfshl/termux-gemini-cli/releases/download/latest/gemini-cli-debian-stable.tar.xz" PD_OVERRIDE_TARBALL_SHA256="" proot-distro install debian --override-alias gemini-cli-debian
