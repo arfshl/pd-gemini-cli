@@ -37,7 +37,7 @@ jobs:
           sudo mount --bind /dev $GITHUB_WORKSPACE/debian/dev
           sudo mount --bind /proc $GITHUB_WORKSPACE/debian/proc
           sudo mount --bind /sys $GITHUB_WORKSPACE/debian/sys
-          sudo chroot $GITHUB_WORKSPACE/debian /bin/sh -c "apt update && apt upgrade && apt install curl -y && apt-get install -y curl && curl -L -o setupnode https://deb.nodesource.com/setup_24.x && chmod +x setupnode && ./setupnode && apt install nodejs -y && npm install -g yarn && yarn global add @google/gemini-cli"
+          sudo chroot $GITHUB_WORKSPACE/debian /bin/sh -c "apt update && apt upgrade -yq && apt install curl -yq && apt-get install -yq curl && curl -L -o setupnode https://deb.nodesource.com/setup_24.x && chmod +x setupnode && ./setupnode && apt install nodejs -y && npm install -g yarn && yarn global add @google/gemini-cli"
           sudo umount -l $GITHUB_WORKSPACE/debian/dev
           sudo umount -l $GITHUB_WORKSPACE/debian/proc
           sudo umount -l $GITHUB_WORKSPACE/debian/sys
