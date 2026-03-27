@@ -1,4 +1,4 @@
-name: "Ubuntu LTS with gemini-cli"
+name: "Debian proot-distro rootfs with gemini cli (containerized)"
 
 on:
   schedule:
@@ -26,7 +26,7 @@ jobs:
           sudo apt install -yq /tmp/keyring.deb
       - name: Start Building
         run: |
-          curl -L -o ubuntu-lts-aarch64.tar.xz https://github.com/arfshl/pd-custom-rootfs/releases/download/ubuntu-lts/ubuntu-lts-aarch64.tar.xz
+          curl -L -o ubuntu-lts-aarch64.tar.xz https://github.com/arfshl/pd-custom-rootfs/releases/download/debian-stable/debian-stable-aarch64.tar.xz
           tar --exclude=dev/* -xJf ubuntu-lts-aarch64.tar.xz
           sudo mkdir -p $GITHUB_WORKSPACE/./dev
           sudo mkdir -p $GITHUB_WORKSPACE/./proc
@@ -40,14 +40,14 @@ jobs:
           sudo umount -l $GITHUB_WORKSPACE/./dev
           sudo umount -l $GITHUB_WORKSPACE/./proc
           sudo umount -l $GITHUB_WORKSPACE/./sys
-          sudo tar --exclude=dev/* -cf - ./ | xz -9 -T0 -c > ubuntu-gemini-aarch64.tar.xz
+          sudo tar --exclude=dev/* -cf - ./ | xz -9 -T0 -c > gemini-cli-debian.tar.xz
           
       - name: Push to release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
-          name: Ubuntu LTS with gemini-cli
+          name: Debian proot-distro rootfs with gemini cli (containerized)
           files: |
-            ubuntu-gemini-aarch64.tar.xz
+            gemini-cli-debian.tar.xz
           preserve_order: true
           make_latest: true
